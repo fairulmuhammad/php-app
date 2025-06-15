@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/php-app.git'
+                git 'https://github.com/fairulmuhammad/php-app.git'
             }
         }
         stage('Install Dependencies') {
