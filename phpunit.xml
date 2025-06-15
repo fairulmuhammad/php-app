@@ -5,4 +5,8 @@
             <directory>tests</directory>
         </testsuite>
     </testsuites>
+<<<<<<< HEAD
 </phpunit>
+=======
+</phpunit>
+>>>>>>> e0a9050267e4462d854982ab3ffd73d22f314f99
