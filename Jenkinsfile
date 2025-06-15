@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/fairumuhammad/php-app.git'
+                git branch: 'main', url: 'https://github.com/fairulmuhammad/php-app.git'
             }
         }
         stage('Install Dependencies') {
