@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh '''
                     apt-get update
-                    apt-get install -y php8.2-dom php8.2-curl
+                    apt-get install -y php8.2-dom php8.2-curl php8.2-mbstring
                     composer install
                 '''
             }
