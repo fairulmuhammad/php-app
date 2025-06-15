@@ -8,8 +8,13 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'composer install'
+                sh '''
+                    sudo apt-get update
+                    sudo apt-get install -y php8.2-dom php8.2-curl
+                    composer install
+                '''
             }
+        }
         }
         stage('Run Tests') {
             steps {
@@ -26,7 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'docker run -d -p 80:80 php-app:latest'
-            }
+              }
         }
     }
 }
