@@ -2,7 +2,7 @@
 use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase {
-    public function testTrue() {
+    public function testTrueIsTrue() {
         $this->assertTrue(true);
     }
 }
