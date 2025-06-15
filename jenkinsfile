@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/YOUR_USERNAME/php-app.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'composer install'
+            }
+        }
+        stage('Run Unit Tests') {
+            steps {
+                sh './vendor/bin/phpunit tests'
+            }
+        }
+        stage('Docker Build & Deploy') {
+            steps {
+                sh 'docker build -t php-app .'
+                sh 'docker run -d -p 8081:80 php-app'
+            }
+        }
+    }
+}
