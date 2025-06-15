@@ -9,8 +9,8 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    sudo apt-get update
-                    sudo apt-get install -y php8.2-dom php8.2-curl
+                    apt-get update
+                    apt-get install -y php8.2-dom php8.2-curl
                     composer install
                 '''
             }
