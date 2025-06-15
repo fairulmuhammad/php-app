@@ -1,5 +1,5 @@
 {
-  "name": "yourname/php-app",
+  "name": "fairulmuhammad/php-app",
   "require": {},
   "autoload": {
     "psr-4": {
