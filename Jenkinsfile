@@ -1,35 +1,31 @@
 pipeline {
-    agent {
-        docker {
-            image 'php:8.2-cli'
-        }
-    }
-
+    agent any
     stages {
-        stage('Clone Repository') {
+        stage('Clone Repo') {
             steps {
-                git branch: 'main', url: 'https://github.com/fairulmuhammad/php-app.git'
+                git 'https://github.com/fairumuhammad/php-app.git'
             }
         }
-
         stage('Install Dependencies') {
             steps {
-                sh 'apt-get update && apt-get install -y unzip git curl'
-                sh 'curl -sS https://getcomposer.org/installer | php'
-                sh 'php composer.phar install'
+                sh 'composer install'
             }
         }
-
-        stage('Run Unit Tests') {
+        stage('Run Tests') {
             steps {
-                sh './vendor/bin/phpunit tests'
+                sh 'php ./vendor/bin/phpunit'
             }
         }
-
-        stage('Docker Build & Deploy') {
+        stage('Build Docker Image') {
             steps {
-                sh 'docker build -t php-app .'
-                sh 'docker run -d -p 8081:80 php-app'
+                script {
+                    docker.build("php-app:latest", ".")
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'docker run -d -p 80:80 php-app:latest'
             }
         }
     }
