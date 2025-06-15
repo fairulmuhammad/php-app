@@ -15,7 +15,6 @@ pipeline {
                 '''
             }
         }
-        }
         stage('Run Tests') {
             steps {
                 sh 'php ./vendor/bin/phpunit'
@@ -30,8 +29,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 80:80 php-app:latest'
-              }
+                sh 'docker run -d -p 80:80 php-app:latest' 
+                }
         }
     }
 }
